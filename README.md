@@ -4,11 +4,11 @@
 
 ### BinaryIndexedTree
 
-- binary_indexed_tree
+- binary_indexed_tree  
   普通のやつ
-- n_binary_indexed_tree
+- n_binary_indexed_tree  
   n 次元に拡張できるらしいので．(to do)
-- 転倒数
+- 転倒数  
   binary_indexed_tree を用いて容易に実装できる
 
 ### Graph
@@ -27,7 +27,7 @@
 
 ### Mathematics
 
-- math_nandemo
+- math_nandemo  
   約数列挙
   素因数分解
 - nCk
