@@ -34,8 +34,9 @@
 - eratosthenes
 
 ### Other
-
-- todo: write here
+- warizan.py
+割る数が負の数のとき，あまりを正の数にする（詳しくは，Other/warizan.ipynb）
+- todo: その他を書く．
 
 ### SegTree
 
