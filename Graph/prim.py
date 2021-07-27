@@ -1,57 +1,36 @@
-"""
-Prim's algorithmは
-グラフ理論で重み付き連結グラフの最小全域木を求める最適化のアルゴリズム
-木から出ている辺群で, 最も重みが小さいものを選んで繋げていく.
-
-優先度付きキューと隣接リストで O(E + V log V)
-"""
-
-import heapq
+from heapq import heapify, heappop, heappush
 
 
-def prim(n: int, s: int, graph: list) -> int:
+def prim(n, graph, start):
     """
-    n := 頂点の数
-    s := スタートの場所
-    graph := グラフの隣接リスト
+    graph[u] := [(weight, v), ...]
     """
+    # 初期化
     seen = [0 for _ in range(n)]
-    seen[s] = 1
-    q = graph[s]
-    heapq.heapify(q)
-    ans = 0
+    seen[start] = 1
+
+    minimum_spanning_tree_sum = 0
     connected = 0
-    while len(q):
-        print(q)
-        weight, t = heapq.heappop(q)
-        if seen[t]:
+
+    # 確定済みの木に繋がっている (重み, 点)
+    # q := [(weight_a, a), (weight_b, b), ...]
+    q = graph[start]
+    heapify(q)
+    while q:
+        weight, u = heappop(q)
+
+        # 頂点 t が確定済みでなければ t への辺を追加
+        if seen[u]:
             continue
-
-        seen[t] = 1
+        seen[u] = 1
         connected += 1
-        ans += weight
+        minimum_spanning_tree_sum += weight
 
-        # 新たに繋げたノードから行けるところをエンキュー
-        for i in graph[t]:
-            heapq.heappush(q, i)
+        # 新たに繋げたノードから行けるところを enqueue
+        for weight, v in graph[u]:
+            heappush(q, (weight, v))
 
         # 全部のノードが繋がったら終了
         if connected == n:
             break
-    return ans
-
-
-def main():
-    V, E, r = map(int, input().split())
-    graph = [[] for _ in range(V)]
-    for _ in range(E):
-        s, t, w = map(int, input().split())
-        graph[s].append((w, t))
-        graph[t].append((w, s))
-    print(graph)
-
-    print(prim(V, r, graph))
-
-
-if '__main__' == __name__:
-    main()
+    return minimum_spanning_tree_sum
