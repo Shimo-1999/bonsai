@@ -52,6 +52,12 @@
 - segtree_add
 - segtree
 
+### StronglyConnectedComponents
+
+- scipy_strongly_connected_components
+  - scipy を用いた強制連結成分分解．
+- strongly_connected_components
+  - 強制連結成分分解 graph の再構築も整備．
 ### UnionFind
 - union_find
 - wighted_union_find
