@@ -3,7 +3,7 @@ from heapq import heappush, heappop
 
 def dijkstra(n, graph, start):
     """
-    graph[u] := [(cost, v), ...]
+    graph[u]: [(cost, v), ...]
     """
     distance = [float('inf') for _ in range(n)]
     distance[start] = 0
@@ -21,7 +21,7 @@ def dijkstra(n, graph, start):
 
 def dijkstra_test(n, graph, start):
     """
-    graph[u] := [(cost, v), ...]
+    graph[u]: [(cost, v), ...]
         u -- cost --> v
     """
     # 初期化

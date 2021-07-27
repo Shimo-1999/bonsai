@@ -54,7 +54,7 @@ class UnionFind():
 
 def kruskal(V, edges):
     """
-    edges := [(start, end, weight)]
+    edges: [(start, end, weight)]
     """
     # weight で sort
     edges = sorted(edges, key=lambda x: x[2])

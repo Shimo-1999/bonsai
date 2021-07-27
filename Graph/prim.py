@@ -3,7 +3,7 @@ from heapq import heapify, heappop, heappush
 
 def prim(n, graph, start):
     """
-    graph[u] := [(weight, v), ...]
+    graph[u]: [(weight, v), ...]
     """
     # 初期化
     seen = [0 for _ in range(n)]
@@ -13,7 +13,7 @@ def prim(n, graph, start):
     connected = 0
 
     # 確定済みの木に繋がっている (重み, 点)
-    # q := [(weight_a, a), (weight_b, b), ...]
+    # q = [(weight_a, a), (weight_b, b), ...]
     q = graph[start]
     heapify(q)
     while q:

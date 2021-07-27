@@ -1,6 +1,6 @@
 def bellman_ford(n, graph, start):
     """
-    graph[u] := [(cost, v), ...]
+    graph[u]: [(cost, v), ...]
     """
     # スタートからの距離を初期化
     distance = [float('inf') for i in range(n)]
