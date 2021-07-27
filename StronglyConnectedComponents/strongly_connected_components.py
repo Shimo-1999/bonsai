@@ -47,7 +47,7 @@ def strongly_connected_components(N, graph, reversed_graph):
 
 def reconstruct_graph(N, graph, label, group):
     """
-    強制連結分解後のグラフを構築
+    強制連結成分分解後のグラフを構築
 
     components[label] := [a, b, c, ...]
     labeled_graph[label_u] := set(label_v, ...)
