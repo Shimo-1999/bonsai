@@ -4,24 +4,6 @@ from heapq import heappush, heappop
 def dijkstra(n, graph, start):
     """
     graph[u]: [(cost, v), ...]
-    """
-    distance = [float('inf') for _ in range(n)]
-    distance[start] = 0
-    Q = [(0, start)]
-    while Q:
-        u_cost, u = heappop(Q)
-        if u_cost > distance[u]:
-            continue
-        for cost, v in graph[u]:
-            if distance[v] > distance[u] + cost:
-                distance[v] = distance[u] + cost
-                heappush(Q, (distance[v], v))
-    return distance
-
-
-def dijkstra_test(n, graph, start):
-    """
-    graph[u]: [(cost, v), ...]
         u -- cost --> v
     """
     # 初期化
