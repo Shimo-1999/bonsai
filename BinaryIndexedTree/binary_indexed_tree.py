@@ -1,7 +1,7 @@
 """
 Binary Indexed Tree(Fenwick Tree)
-
-memo: x の最も下に立っているビットは，x & -x で取り出せる
+- a_1 ~ a_i の和が求められる．
+- a_i += x ができる．
 """
 
 
