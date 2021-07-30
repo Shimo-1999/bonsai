@@ -4,20 +4,22 @@ def bellman_ford(n, edges, start):
         u -- cost --> v
     """
     # スタートからの距離を初期化
-    distance = [float('inf') for i in range(n)]
+    distance = [float('inf') for _ in range(n)]
     distance[start] = 0
 
     for i in range(n):  # 計算量は 頂点数 * 辺の数
+        update = False
         for u, v, cost in edges:
             # v までの距離が u + cost より大きければ更新
             if distance[v] > distance[u] + cost:
                 distance[v] = distance[u] + cost
+                update = True
 
-    # 負閉路の調査
-    for _ in range(n):  # 計算量は頂点の数 頂点数 * 辺の数
-        for u, v, cost in edges:
-            # v までの距離が u + cost より大きければ更新
-            if distance[v] > distance[u] + cost:
-                distance[v] = -float('inf')
+        # 一つも更新がなければ終わり
+        if not update:
+            break
 
+        # 負のサイクル
+        if i == n - 1:
+            return -1
     return distance
