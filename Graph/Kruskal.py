@@ -54,15 +54,16 @@ class UnionFind():
 
 def kruskal(V, edges):
     """
-    edges: [(start, end, weight)]
+    edges: [(u, v, weight), ...]
+        u -- weight --> v
     """
     # weight で sort
     edges = sorted(edges, key=lambda x: x[2])
     uf = UnionFind(V)
     minimum_spanning_tree = []
     for edge in edges:
-        start, end, weight = edge
-        if not uf.same(start, end):
-            uf.union(start, end)
+        u, v, weight = edge
+        if not uf.same(u, v):
+            uf.union(u, v)
             minimum_spanning_tree.append(edge)
     return minimum_spanning_tree

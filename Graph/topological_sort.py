@@ -4,7 +4,7 @@ from collections import deque
 def topological_sort(N, graph, indegree):
     """
     graph[u]: [v, ...]
-    indegree: [int, ...]
+    indegree(入次数): [int, ...]
 
     sorted_lst: [int, ...]
     """
