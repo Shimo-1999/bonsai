@@ -1,21 +1,16 @@
-import math
+"""
+100 までの素数の数 25
+1000 までの素数の数 168
+10000 までの素数の数 1229
+100000 までの素数の数 9592
+1000000 までの素数の数 78498
+"""
 
+n = 1000000
 
-def get_sieve_of_eratosthenes(n):
-    """
-    :return: n 以下の素数のリスト
-    """
-    if n < 2:
-        raise ValueError('n is more than 2')
-    prime = []
-    limit = math.sqrt(n)
-    data = [i + 1 for i in range(1, n)]
-    while True:
-        p = data[0]
-        if limit <= p:
-            return prime + data
-        prime.append(p)
-        data = [e for e in data if e % p != 0]
+num = [False, False] + [True] * (n - 1)
+for i in range(2, int(n ** 0.5) + 1):
+    for j in range(i ** 2, n + 1, i):
+        num[j] = False
 
-
-print(get_sieve_of_eratosthenes(1000))
+print(sum(num))
