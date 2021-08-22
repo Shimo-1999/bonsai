@@ -46,6 +46,8 @@ class LazySegmentTree:
         # 上から伝播していくので reversed
         for i in reversed(indexes):
             value = self.lazy[i]
+            if not value:
+                continue
             value >>= 1
             self.lazy[2 * i] += value
             self.tree[2 * i] += value
