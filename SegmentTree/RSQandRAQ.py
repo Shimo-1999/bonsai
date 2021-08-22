@@ -54,7 +54,7 @@ class LazySegmentTree:
             self.lazy[i] = 0
 
     def update(self, left, right, x):
-        """区間 [left, right) を x で更新"""
+        """区間 [left, right) に x を加算"""
         indexes = self.get_index(left, right)
         self.propagate(indexes)
 
