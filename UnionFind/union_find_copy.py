@@ -50,3 +50,85 @@ class UnionFind():
 
     def __str__(self):
         return '\n'.join(f'{r}: {m}' for r, m in self.all_group_members().items())
+
+#############################################################################################################################
+
+
+uf = UnionFind(6)
+print(uf.parents)
+# [-1, -1, -1, -1, -1, -1]
+
+print(uf)
+# 0: [0]
+# 1: [1]
+# 2: [2]
+# 3: [3]
+# 4: [4]
+# 5: [5]
+
+uf.union(0, 2)
+print(uf.parents)
+# [-2, -1, 0, -1, -1, -1]
+
+print(uf)
+# 0: [0, 2]
+# 1: [1]
+# 3: [3]
+# 4: [4]
+# 5: [5]
+
+uf.union(1, 3)
+print(uf.parents)
+uf.union(4, 5)
+print(uf.parents)
+uf.union(1, 4)
+print(uf.parents)
+# [-2, -2, 0, 1, -1, -1]
+# [-2, -2, 0, 1, -2, 4]
+# [-2, -4, 0, 1, 1, 4]
+
+print(uf)
+# 0: [0, 2]
+# 1: [1, 3, 4, 5]
+
+print(uf.parents)
+# [-2, -4, 0, 1, 1, 1]
+
+print('-----------')
+for i in range(len(uf.parents)):
+    print(abs(uf.parents[uf.find(i)]))
+print(uf.find(0))
+# 0
+
+print(uf.find(5))
+# 1
+
+print(uf.size(0))
+# 2
+
+print(uf.size(5))
+# 4
+
+print(uf.same(0, 2))
+# True
+
+print(uf.same(0, 5))
+# False
+
+print(uf.members(0))
+# [0, 2]
+
+print(uf.members(5))
+# [1, 3, 4, 5]
+
+print(uf.roots())
+# [0, 1]
+
+print(uf.group_count())
+# 2
+
+print(uf.all_group_members())
+# {0: [0, 2], 1: [1, 3, 4, 5]}
+
+print(list(uf.all_group_members().values()))
+# [[0, 2], [1, 3, 4, 5]]

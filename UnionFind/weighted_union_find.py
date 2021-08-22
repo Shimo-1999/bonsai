@@ -18,6 +18,9 @@ class WeightedUnionFind:
 
     # 併合
     def union(self, x, y, w):
+        """
+        x -- weight --> y
+        """
         rx = self.find(x)
         ry = self.find(y)
         # xの木の高さ < yの木の高さ
