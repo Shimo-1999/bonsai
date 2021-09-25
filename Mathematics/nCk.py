@@ -20,6 +20,10 @@ def nCk(n, k):
     return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD
 
 
+def nHk(n, k):
+    return nCk(n + k - 1, n - 1)
+
+
 def test():
     preprocess(10)
     for i in range(10):
