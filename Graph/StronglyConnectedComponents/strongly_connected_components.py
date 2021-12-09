@@ -10,6 +10,7 @@ def strongly_connected_components(N, graph, reversed_graph):
 
     label: int
     group := [label, ...]
+    label は topological の昇順
     """
 
     def dfs(u):
@@ -45,26 +46,6 @@ def strongly_connected_components(N, graph, reversed_graph):
     return label, group
 
 
-def reconstruct_graph(N, graph, label, group):
-    """
-    強制連結成分分解後のグラフを構築
-
-    components[label] := [a, b, c, ...]
-    labeled_graph[label_u] := set(label_v, ...)
-    """
-    labeled_graph = [set() for i in range(label)]
-    components = [[] for i in range(label)]
-    for u in range(N):
-        label_u = group[u]
-        components[label_u].append(u)
-        for v in graph[u]:
-            label_v = group[v]
-            if label_u == label_v:
-                continue
-            labeled_graph[label_u].add(label_v)
-    return components, labeled_graph
-
-
 V, E = map(int, input().split())
 graph = [[] for i in range(V)]
 reversed_graph = [[] for i in range(V)]
@@ -72,14 +53,11 @@ for i in range(E):
     s, t = map(int, input().split())
     graph[s].append(t)
     reversed_graph[t].append(s)
-# print(graph)
-# print(reversed_graph)
 
-label_num, group = strongly_connected_components(V, graph, reversed_graph)
-# print(label_num, group)
-componets, labeled_graph = reconstruct_graph(V, graph, label_num, group)
-for i in componets:
-    print(i)
-
-for i in labeled_graph:
-    print(i)
+label, group = strongly_connected_components(V, graph, reversed_graph)
+answer = [[] for _ in range(label)]
+for idx, num in enumerate(group):
+    answer[num].append(idx)
+print(label)
+for ans_i in answer:
+    print(len(ans_i), *ans_i)
