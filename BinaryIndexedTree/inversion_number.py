@@ -18,8 +18,8 @@ class BinaryIndexedTree:
 
 def inversion_number(N, lst):
     """
-    転倒数をもとめる．
-    転倒数: 自分より左にあり，自分より小さな数の個数
+    転倒数をもとめる.
+    転倒数: 自分より左にあり, 自分より小さな数の個数
     """
     # 圧縮
     keep = {}
