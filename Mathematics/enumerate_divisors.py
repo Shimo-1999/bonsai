@@ -1,7 +1,4 @@
-def make_divisors(n):
-    """
-    約数列挙
-    """
+def enumerate_divisors(n):
     lower_divisors, upper_divisors = [], []
     i = 1
     while i * i <= n:
@@ -13,12 +10,6 @@ def make_divisors(n):
     return lower_divisors + upper_divisors[::-1]
 
 
-def main():
-
-    # 約数列挙
-    print(make_divisors(67280421310721))
-    print(make_divisors(67280421310722))
-
-
-if __name__ == '__main__':
-    main()
+# 正の約数列挙
+print(enumerate_divisors(67280421310721))
+print(enumerate_divisors(67280421310722))

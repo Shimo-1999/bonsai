@@ -4,7 +4,7 @@ INF = float('inf')
 
 
 class Dinic:
-    """Max Flow"""
+    """Maximum Flow"""
 
     def __init__(self, n):
         self.n = n

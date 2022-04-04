@@ -1,12 +1,6 @@
-# 入力: 座標の配列
-# 出力 MP[e] = i: 座標eはi番目に該当
-def compress(arr):
-    *XS, = set(arr)
-    XS.sort()
-    return {e: i for i, e in enumerate(XS)}
+x = [1, 10000, 30, 5, 2000, 2000]
 
-# 1行バージョン
-compress2 = lambda arr: {e: i for i, e in enumerate(sorted(set(arr)))}
+# 圧縮
+d = {e: i for i, e in enumerate(sorted(set(x)))}
 
-# 直に座標圧縮する場合
-compress3 = lambda arr: list(map({e: i for i, e in enumerate(sorted(set(arr)))}.__getitem__, arr))
+print(d)

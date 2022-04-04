@@ -1,18 +1,21 @@
-def k_bit_zentansaku(k, n):
+def k_zentansaku(n, k):
     """
-    k ** n の全探索を行う
+    k ** n 個の重複順列を生成
+    k = 2 なら bit 全探索
     """
-    ret = []
+    ret = [[None for _j in range(n)] for _i in range(k ** n)]
     for i in range(k ** n):
         tmp = i
-        lst = [0 for i in range(n)]
-        for j in range(n):
-            lst[j] = tmp % k
+        for j in reversed(range(n)):
+            ret[i][j] = tmp % k
             tmp //= k
-        ret.append(lst)
     return ret
 
 
-k = 3
+k = 4
 n = 3
-print(k_bit_zentansaku(k, n))
+print(k_zentansaku(n, k))
+
+# これと同じなのでいらないかもです
+import itertools
+print(list(itertools.product(range(k), repeat=n)))
